@@ -1,9 +1,10 @@
-import React, { useState, useRef, useEffect } from "react";
-import { Autocomplete, TextField, InputAdornment } from "@mui/material";
+import React, { useState, useRef } from "react";
+import { Autocomplete, TextField } from "@mui/material";
 import AutoSuggestion from "./AutoSuggestion";
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import CreateMarker from "../Marker/CreateMarker";
 import TextSearch from "./TextSearch";
+import useAutoSuggestion from "../../hooks/useAutoSuggestion";
 
 function PlaceSearch() {
   const [inputValue, setInputValue] = useState("");
@@ -11,6 +12,8 @@ function PlaceSearch() {
   const placeLib = useMapsLibrary("places");
   const sessionTokenRef = useRef(null);
   const map = useMap();
+
+  const suggestions = useAutoSuggestion(inputValue, sessionTokenRef.current);
 
   const handleInputChange = (event, value) => {
     setInputValue(value);
@@ -44,14 +47,15 @@ function PlaceSearch() {
         width: 300,
       }}
     >
-      <AutoSuggestion
+      {/* <AutoSuggestion
         input={inputValue}
         onSuggestions={setOptions}
         sessionToken={sessionTokenRef.current}
-      />
+      /> */}
       <Autocomplete
         freeSolo
-        options={options}
+        //options={options}
+        options={suggestions}
         getOptionLabel={(option) => option.label || ""}
         onInputChange={handleInputChange}
         onChange={(value) => handlePlaceSelected(value)}
