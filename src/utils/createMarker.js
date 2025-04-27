@@ -3,7 +3,7 @@
 let markers = []; // 기존 마커를 추적하기 위한 배열
 
 async function CreateMarker(map, places) {
-  // 기존 마커 제거
+  // 함수 호출마다 기존 마커 제거
   markers.forEach((marker) => marker.setMap(null));
   markers = []; // 배열 초기화
 

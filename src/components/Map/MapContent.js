@@ -3,18 +3,18 @@ import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import POIClickListener from "./POIClickListener";
 
 function MapContent() {
-  const map = useMap();
-  const placeLib = useMapsLibrary("places");
+  const map = useMap(); // google.maps.importLibrary("maps")와 동일
+  const placeLib = useMapsLibrary("places"); // google.maps.importLibrary("places")와 동일
 
   useEffect(() => {
     if (!map) return;
 
-    const { poiClickListener } = POIClickListener(map);
+    const { poiClickListener } = POIClickListener(map); //POIClickListener.js에서 가져온 클릭 리스너
 
     return () => {
       if (poiClickListener) {
         poiClickListener.remove();
-      }
+      } //컴포넌트가 언마운트 되거나 useEffect가 다시 실행될 때마다 리스너를 제거
     };
   }, [map, placeLib]);
 }

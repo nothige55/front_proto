@@ -9,7 +9,7 @@ function POIClickListener(map) {
       clickedPlaceId = null; // placeId가 없으면 null로 설정
       console.log("Map clicked, no POI.");
     }
-  });
+  }); //지도 클릭시 placeId가 있으면 placeId를 저장하는 리스너 생성
 
   // listener와 clickedPlaceId를 함께 반환
   return { listener, clickedPlaceId };
