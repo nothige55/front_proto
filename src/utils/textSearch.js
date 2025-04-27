@@ -1,4 +1,4 @@
-async function TextSearch(input, { Place }) {
+async function textSearch(input, { Place }) {
   const request = {
     textQuery: input,
     fields: ["displayName", "location", "id"],
@@ -8,7 +8,7 @@ async function TextSearch(input, { Place }) {
   return { places };
 }
 
-export default TextSearch;
+export default textSearch;
 
 // const handleTextSearch = async () => {
 //     const { Place } = placeLib;

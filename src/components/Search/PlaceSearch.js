@@ -2,7 +2,7 @@ import React, { useState, useRef } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import CreateMarker from "../Marker/CreateMarker";
-import TextSearch from "./TextSearch";
+import textSearch from "../../utils/textSearch";
 import useAutoSuggestion from "../../hooks/useAutoSuggestion";
 
 function PlaceSearch() {
@@ -22,12 +22,7 @@ function PlaceSearch() {
   };
 
   const handlePlaceSelected = async (input) => {
-    if (!input) {
-      console.log("선택된 장소가 없습니다.");
-      return;
-    }
-
-    const { places } = await TextSearch(inputValue, { Place: placeLib.Place });
+    const { places } = await textSearch(inputValue, { Place: placeLib.Place });
     console.log("장소 선택됨:", places);
     CreateMarker(map, places);
     sessionTokenRef.current = null;
