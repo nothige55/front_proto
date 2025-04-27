@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Autocomplete, TextField } from "@mui/material";
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import CreateMarker from "../../utils/createMarker";
 import textSearch from "../../utils/textSearch";
@@ -28,7 +27,7 @@ function PlaceSearch() {
   };
 
   const handlePlaceSelected = async () => {
-    const { places } = await textSearch(inputValue, { Place: placeLib.Place });
+    const { places } = await textSearch(inputValue, { Place: placeLib.Place }); //라이브러리 호출 수 줄이기 위해 Place를 인자로 전달 추후에 로직 변경 여부 확인
     console.log("장소 선택됨:", places);
     CreateMarker(map, places);
 
@@ -48,30 +47,9 @@ function PlaceSearch() {
         width: 300,
       }}
     >
-      {/* <Autocomplete
-        freeSolo
-        options={suggestions}
-        getOptionLabel={(option) => option.label || ""}
-        onInputChange={handleInputChange}
-        onChange={(event, value) => handlePlaceSelected(value)}
-        renderInput={(params) => (
-          <TextField
-            {...params}
-            placeholder="장소 검색"
-            variant="outlined"
-            fullWidth
-          />
-        )}
-        renderOption={(props, option) => (
-          <li {...props} key={option.place_id}>
-            {option.label}
-          </li>
-        )}
-      /> */}
       <SearchBox
         suggestions={suggestions}
         onInputChange={handleInputChange}
-        // onSelected={(event, value) => handlePlaceSelected(value)}
         onSelected={handlePlaceSelected}
       />
     </div>
