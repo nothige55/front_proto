@@ -1,6 +1,5 @@
 import React, { useState, useRef } from "react";
 import { Autocomplete, TextField } from "@mui/material";
-import AutoSuggestion from "./AutoSuggestion";
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
 import CreateMarker from "../Marker/CreateMarker";
 import TextSearch from "./TextSearch";
@@ -8,7 +7,6 @@ import useAutoSuggestion from "../../hooks/useAutoSuggestion";
 
 function PlaceSearch() {
   const [inputValue, setInputValue] = useState("");
-  const [options, setOptions] = useState([]);
   const placeLib = useMapsLibrary("places");
   const sessionTokenRef = useRef(null);
   const map = useMap();
@@ -38,7 +36,6 @@ function PlaceSearch() {
   return (
     <div
       style={{
-        //position: "absolute",
         top: 16,
         left: 16,
         right: 16,
@@ -47,14 +44,8 @@ function PlaceSearch() {
         width: 300,
       }}
     >
-      {/* <AutoSuggestion
-        input={inputValue}
-        onSuggestions={setOptions}
-        sessionToken={sessionTokenRef.current}
-      /> */}
       <Autocomplete
         freeSolo
-        //options={options}
         options={suggestions}
         getOptionLabel={(option) => option.label || ""}
         onInputChange={handleInputChange}
