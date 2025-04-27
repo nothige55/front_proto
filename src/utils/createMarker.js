@@ -26,7 +26,6 @@ async function CreateMarker(map, places) {
     marker.id = id;
     // 새 마커를 배열에 저장
     markers.push(marker);
-    console.log(markers[0].id);
   });
 }
 
