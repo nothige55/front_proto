@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
-import POIClickListener from "./POIClickListener";
+import POIClickListener from "../../utils/POIClickListener"; // POI 클릭 리스너
 
 function MapContent() {
   const map = useMap(); // google.maps.importLibrary("maps")와 동일

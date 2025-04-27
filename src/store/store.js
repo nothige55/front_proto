@@ -3,8 +3,8 @@ import { create } from "zustand";
 const useStore = create((set) => ({
   // searchResults: [],
   // setSearchResults: (results) => set({ searchResults: results }),
-  // selectedPlace: null,
-  // setSelectedPlace: (place) => set({ selectedPlace: place }),
+  selectedPlaceId: null,
+  setSelectedPlaceId: (id) => set({ selectedPlaceId: id }),
 }));
 
 export default useStore;
