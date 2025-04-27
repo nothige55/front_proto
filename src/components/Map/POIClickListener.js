@@ -1,12 +1,18 @@
-function MapClickListener(map) {
+function POIClickListener(map) {
+  let clickedPlaceId = null; // 클릭된 placeId를 저장할 변수
+
   const listener = map.addListener("click", (e) => {
     if (e.placeId) {
-      console.log("clicked POI id:", e.placeId);
+      clickedPlaceId = e.placeId; // placeId 저장
+      console.log("clicked POI id:", clickedPlaceId);
     } else {
+      clickedPlaceId = null; // placeId가 없으면 null로 설정
       console.log("Map clicked, no POI.");
     }
   });
-  return listener;
+
+  // listener와 clickedPlaceId를 함께 반환
+  return { listener, clickedPlaceId };
 }
 
-export default MapClickListener;
+export default POIClickListener;

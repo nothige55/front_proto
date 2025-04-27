@@ -9,47 +9,13 @@ function MapContent() {
   useEffect(() => {
     if (!map) return;
 
-    // const getPlaceDetails = async (placeId) => {
-    //   try {
-    //     const place = new placeLib.Place({
-    //       id: placeId,
-    //     });
-    //     await place.fetchFields({
-    //       fields: [
-    //         "displayName",
-    //         "formattedAddress",
-    //         //"opening_hours", Place.regularOpeningHours 사용
-    //         "photos",
-    //         "rating",
-    //         "types",
-    //       ],
-    //     });
-    //     console.log(place.displayName);
-    //   } catch (error) {
-    //     console.error("Error fetching place details:", error);
-    //   }
-    // };
-
-    // const poiClickListener = map.addListener("click", (e) => {
-    //   if (e.placeId) {
-    //     console.log("POI clicked:", e.placeId);
-    //     getPlaceDetails(e.placeId);
-    //   } else {
-    //     console.log("Map clicked, no POI.");
-    //   }
-    // });
-
-    const poiClickListener = POIClickListener(map);
+    const { poiClickListener } = POIClickListener(map);
 
     return () => {
       if (poiClickListener) {
         poiClickListener.remove();
       }
     };
-
-    // return () => {
-    //   poiClickListener.remove();
-    // };
   }, [map, placeLib]);
 }
 
