@@ -3,8 +3,8 @@ import { Autocomplete, TextField, InputAdornment } from "@mui/material";
 import SearchIcon from "@mui/icons-material/Search";
 import AutoSuggestion from "./AutoSuggestion";
 import { useMap, useMapsLibrary } from "@vis.gl/react-google-maps";
-import useStore from "../store/store";
-import CreateMarker from "./CreateMarker";
+import useStore from "../../store/store";
+import CreateMarker from "../Marker/CreateMarker";
 
 function PlaceSearch() {
   const [inputValue, setInputValue] = useState("");
