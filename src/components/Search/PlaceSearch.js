@@ -42,7 +42,7 @@ function PlaceSearch() {
     const { Place } = placeLib;
     const request = {
       textQuery: inputValue,
-      fields: ["displayName", "location"],
+      fields: ["displayName", "location", "id"],
       maxResultCount: 10,
     };
     const { places } = await Place.searchByText(request);

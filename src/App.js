@@ -1,8 +1,8 @@
 import "./App.css";
-import MapComponent from "./components/MapComponent";
+import MapComponent from "./components/Map/MapComponent";
 import { APIProvider } from "@vis.gl/react-google-maps";
-import PlaceSearch from "./components/PlaceSearch";
-import PlaceWindow from "./components/PlaceWindow";
+import PlaceSearch from "./components/Search/PlaceSearch";
+import PlaceWindow from "./components/Search/PlaceWindow";
 
 const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
