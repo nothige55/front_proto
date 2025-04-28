@@ -19,7 +19,7 @@ export function usePlaceDetails() {
             "types",
           ],
         });
-        console.log(place.displayName);
+        //console.log(place.photos[0].getURI());
         return place; // 필요하면 place 리턴
       } catch (error) {
         console.error("Error fetching place details:", error);

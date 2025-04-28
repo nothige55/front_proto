@@ -26,26 +26,34 @@ function PlaceWindow() {
       elevation={3}
       sx={{
         //position: "absolute",
-        top: 16, // 위쪽 간격
-        left: 16, // 왼쪽 간격
-        bottom: 32, // 아래쪽 간격 추가
-        right: 16, // 오른쪽 간격 추가
-        width: 268,
+        // top: 16, // 위쪽 간격
+        // left: 16, // 왼쪽 간격
+        // bottom: 32, // 아래쪽 간격 추가
+        // right: 16, // 오른쪽 간격 추가
+        width: 300,
         height: "100%",
         // maxHeight: "calc(100vh - 32px)", // 위아래 간격을 고려한 최대 높이
         overflowY: "auto",
         borderRadius: 2,
-        p: 2,
+        //p: 2,
         zIndex: 1000, // 지도가 덮지 않도록
         backgroundColor: "white",
       }}
     >
       {place ? (
         <div>
-          <h2>{place.displayName}</h2>
-          <p>{place.formattedAddress}</p>
-          <p>Rating: {place.rating}</p>
-          <p>Types: {place.types?.join(", ")}</p>
+          <img
+            src={place.photos[0].getURI()}
+            alt="Place"
+            style={{
+              width: "100%",
+            }}
+          />
+          <div style={{ padding: 16 }}>
+            <h2>{place.displayName}</h2>
+            <p>{place.formattedAddress}</p>
+            <p>Rating: {place.rating}</p>
+          </div>
         </div>
       ) : (
         <p>장소를 선택하세요.</p>
