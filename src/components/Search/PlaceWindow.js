@@ -25,14 +25,8 @@ function PlaceWindow() {
     <Paper
       elevation={3}
       sx={{
-        //position: "absolute",
-        // top: 16, // 위쪽 간격
-        // left: 16, // 왼쪽 간격
-        // bottom: 32, // 아래쪽 간격 추가
-        // right: 16, // 오른쪽 간격 추가
         width: 300,
         height: "100%",
-        // maxHeight: "calc(100vh - 32px)", // 위아래 간격을 고려한 최대 높이
         overflowY: "auto",
         borderRadius: 2,
         //p: 2,
@@ -56,7 +50,7 @@ function PlaceWindow() {
           </div>
         </div>
       ) : (
-        <p>장소를 선택하세요.</p>
+        <div />
       )}
     </Paper>
   );

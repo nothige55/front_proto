@@ -39,9 +39,6 @@ function PlaceSearch() {
   return (
     <div
       style={{
-        top: 16,
-        left: 16,
-        right: 16,
         zIndex: 1000,
         backgroundColor: "white",
         width: 300,
