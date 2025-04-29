@@ -31,6 +31,7 @@ async function CreateMarker(map, places) {
     // 새 마커를 배열에 저장
     markers.push(marker);
   });
+  return markers;
 }
 
 export default CreateMarker;

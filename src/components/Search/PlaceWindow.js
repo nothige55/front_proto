@@ -17,7 +17,6 @@ function PlaceWindow() {
       const placeDetails = await getPlaceDetails(selectedPlaceId);
       setPlace(placeDetails); // 선택된 장소 상태 업데이트
     };
-
     fetchPlaceDetails();
   }, [selectedPlaceId, getPlaceDetails]);
 
@@ -37,8 +36,9 @@ function PlaceWindow() {
       {place ? (
         <div>
           <img
-            src={place.photos[0].getURI()}
+            src={place.photos[0].getURI({ maxWidth: 300 })}
             alt="Place"
+            crossOrigin="anonymous" // CORS 문제 해결 시도
             style={{
               width: "100%",
             }}

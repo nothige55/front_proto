@@ -5,12 +5,14 @@ import textSearch from "../../utils/textSearch";
 import useAutoSuggestion from "../../hooks/useAutoSuggestion";
 import useSessionToken from "../../hooks/useSessionToken";
 import SearchBox from "./SearchBox";
+import useStore from "../../store/store";
 
 function PlaceSearch() {
   const [inputValue, setInputValue] = useState("");
   const [sessionToken, setSessionToken] = useState(null); // 세션 토큰 상태 관리
   const placeLib = useMapsLibrary("places");
   const map = useMap();
+  const setSelectedPlaceId = useStore((state) => state.setSelectedPlaceId);
 
   const { getSessionToken, clearSessionToken } = useSessionToken(placeLib);
 
@@ -32,8 +34,13 @@ function PlaceSearch() {
       map,
     }); //라이브러리 호출 수 줄이기 위해 Place를 인자로 전달 추후에 로직 변경 여부 확인
     console.log("장소 선택됨:", places);
-    CreateMarker(map, places);
-
+    const markers = CreateMarker(map, places);
+    (await markers).forEach((marker) => {
+      marker.addListener("click", () => {
+        console.log("Marker clicked:", marker.id);
+        setSelectedPlaceId(marker.id); // 클릭된 마커의 ID를 Zustand 스토어에 저장
+      });
+    });
     // 세션 토큰 초기화
     clearSessionToken();
     setSessionToken(null);
