@@ -1,6 +1,8 @@
-async function textSearch(input, { Place }) {
+async function textSearch(input, { Place, map }) {
+  const center = map.getCenter();
   const request = {
     textQuery: input,
+    locationBias: { lat: center.lat(), lng: center.lng() },
     fields: ["displayName", "location", "id"],
     maxResultCount: 10,
   };

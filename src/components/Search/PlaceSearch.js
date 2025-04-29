@@ -27,7 +27,10 @@ function PlaceSearch() {
   };
 
   const handlePlaceSelected = async () => {
-    const { places } = await textSearch(inputValue, { Place: placeLib.Place }); //라이브러리 호출 수 줄이기 위해 Place를 인자로 전달 추후에 로직 변경 여부 확인
+    const { places } = await textSearch(inputValue, {
+      Place: placeLib.Place,
+      map,
+    }); //라이브러리 호출 수 줄이기 위해 Place를 인자로 전달 추후에 로직 변경 여부 확인
     console.log("장소 선택됨:", places);
     CreateMarker(map, places);
 

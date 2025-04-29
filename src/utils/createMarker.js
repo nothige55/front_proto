@@ -24,6 +24,10 @@ async function CreateMarker(map, places) {
     });
 
     marker.id = id;
+    marker.addListener("click", () => {
+      console.log("Marker clicked:", id);
+      // 마커 클릭 시 추가 동작을 여기에 작성
+    });
     // 새 마커를 배열에 저장
     markers.push(marker);
   });
