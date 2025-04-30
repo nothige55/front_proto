@@ -20,15 +20,9 @@ async function CreateMarker(map, places) {
         lat: location.lat(),
         lng: location.lng(),
       },
-      gmpClickable: true,
     });
 
     marker.id = id;
-    marker.addListener("gmp-click", () => {
-      console.log("Marker clicked:", id);
-      // 마커 클릭 시 추가 동작을 여기에 작성
-    });
-    // 새 마커를 배열에 저장
     markers.push(marker);
   });
   return markers;
