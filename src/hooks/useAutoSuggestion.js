@@ -40,7 +40,7 @@ function useAutoSuggestion(input, sessionToken) {
         //     return { label: place.displayName, place_id: place.id };
         //   })
         // );
-        console.log(detailedSuggestions);
+        //console.log(detailedSuggestions);
         setSuggestions(detailedSuggestions);
       } catch (error) {
         console.error("Error fetching suggestions:", error);

@@ -24,7 +24,7 @@ async function CreateMarker(map, places) {
     });
 
     marker.id = id;
-    marker.addListener("click", () => {
+    marker.addListener("gmp-click", () => {
       console.log("Marker clicked:", id);
       // 마커 클릭 시 추가 동작을 여기에 작성
     });
