@@ -20,7 +20,7 @@ function PlaceWindow() {
     fetchPlaceDetails();
   }, [selectedPlaceId, getPlaceDetails]);
 
-  return (
+  return place ? (
     <Paper
       elevation={3}
       sx={{
@@ -28,32 +28,23 @@ function PlaceWindow() {
         height: "100%",
         overflowY: "auto",
         borderRadius: 2,
-        //p: 2,
-        zIndex: 1000, // 지도가 덮지 않도록
+        zIndex: 1000,
         backgroundColor: "white",
       }}
     >
-      {place ? (
-        <div>
-          <img
-            src={place.photos[0].getURI({ maxWidth: 300 })}
-            alt="Place"
-            crossOrigin="anonymous" // CORS 문제 해결 시도
-            style={{
-              width: "100%",
-            }}
-          />
-          <div style={{ padding: 16 }}>
-            <h2>{place.displayName}</h2>
-            <p>{place.formattedAddress}</p>
-            <p>Rating: {place.rating}</p>
-          </div>
-        </div>
-      ) : (
-        <div />
-      )}
+      <img
+        src={place.photos[0].getURI({ maxWidth: 300 })}
+        alt="Place"
+        crossOrigin="anonymous"
+        style={{ width: "100%" }}
+      />
+      <div style={{ padding: 16 }}>
+        <h2>{place.displayName}</h2>
+        <p>{place.formattedAddress}</p>
+        <p>Rating: {place.rating}</p>
+      </div>
     </Paper>
-  );
+  ) : null;
 }
 
 export default PlaceWindow;

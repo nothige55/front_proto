@@ -20,6 +20,7 @@ export function usePlaceDetails() {
           ],
         });
         //console.log(place.photos[0].getURI());
+        console.log("fetchFields used"); //많이 호출되면 비용 많이 나감 체크할것
         return place; // 필요하면 place 리턴
       } catch (error) {
         console.error("Error fetching place details:", error);

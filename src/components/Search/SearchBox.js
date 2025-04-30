@@ -12,10 +12,13 @@ function SearchBox({ suggestions, onInputChange, onSelected }) {
         <TextField
           {...params}
           placeholder="장소 검색"
-          variant="outlined"
-          fullWidth
-          InputProps={{
-            ...params.InputProps,
+          slotProps={{
+            input: {
+              ...params.InputProps,
+              style: {
+                backgroundColor: "white",
+              },
+            },
           }}
         />
       )}

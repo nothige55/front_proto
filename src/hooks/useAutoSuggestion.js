@@ -25,16 +25,22 @@ function useAutoSuggestion(input, sessionToken) {
             request
           );
 
-        const detailedSuggestions = await Promise.all(
-          rawSuggestions.map(async (suggestion) => {
-            const place = suggestion.placePrediction.toPlace();
-            await place.fetchFields({
-              fields: ["displayName", "formattedAddress", "id"],
-            });
-            return { label: place.displayName, place_id: place.id };
-          })
-        );
+        const detailedSuggestions = rawSuggestions.map((suggestion) => ({
+          // label: suggestion.queryPrediction.text.text, // 장소 이름
+          label: suggestion.placePrediction.mainText.text,
+          place_id: suggestion.placePrediction.placeId, // 장소 ID
+        }));
 
+        // const detailedSuggestions = await Promise.all(
+        //   rawSuggestions.map(async (suggestion) => {
+        //     const place = suggestion.placePrediction.toPlace();
+        //     await place.fetchFields({
+        //       fields: ["displayName", "formattedAddress", "id"],
+        //     });
+        //     return { label: place.displayName, place_id: place.id };
+        //   })
+        // );
+        console.log(detailedSuggestions);
         setSuggestions(detailedSuggestions);
       } catch (error) {
         console.error("Error fetching suggestions:", error);

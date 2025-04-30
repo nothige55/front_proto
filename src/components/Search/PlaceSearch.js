@@ -50,7 +50,6 @@ function PlaceSearch() {
     <div
       style={{
         zIndex: 1000,
-        backgroundColor: "white",
         width: 300,
       }}
     >

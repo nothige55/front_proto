@@ -7,6 +7,7 @@ async function textSearch(input, { Place, map }) {
     maxResultCount: 10,
   };
   const { places } = await Place.searchByText(request);
+  console.log("textSearched");
   return { places };
 }
 

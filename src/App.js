@@ -3,6 +3,7 @@ import MapComponent from "./components/Map/MapComponent";
 import { APIProvider } from "@vis.gl/react-google-maps";
 import PlaceSearch from "./components/Search/PlaceSearch";
 import PlaceWindow from "./components/Search/PlaceWindow";
+import PlanView from "./components/Plan/PlanView";
 
 const GOOGLE_MAPS_API_KEY = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
@@ -19,15 +20,23 @@ function App() {
             right: "auto",
             bottom: 16,
             zIndex: 1000, // 지도 위로
-            width: 300,
-            height: "calc(100vh-16px)",
-            display: "flex",
-            flexDirection: "column",
-            gap: 16, // 컴포넌트 사이에 간격 주고 싶으면
+            display: "flex", // 가로로 배치
+            gap: 16, // 컴포넌트 사이 간격
           }}
         >
-          <PlaceSearch />
-          <PlaceWindow />
+          <div>
+            <PlanView />
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              gap: 16, // 컴포넌트 사이 간격
+            }}
+          >
+            <PlaceSearch />
+            <PlaceWindow />
+          </div>
         </div>
       </APIProvider>
     </div>
