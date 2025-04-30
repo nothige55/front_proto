@@ -51,6 +51,7 @@ function PlaceSearch() {
       style={{
         zIndex: 1000,
         width: 300,
+        pointerEvents: "auto",
       }}
     >
       <SearchBox

@@ -1,6 +1,7 @@
 function POIClickListener(map, setSelectedPlaceId) {
   const listener = map.addListener("click", (e) => {
     if (e.placeId) {
+      e.stop();
       setSelectedPlaceId(e.placeId); // 클릭된 placeId를 Zustand 스토어에 저장
       console.log("clicked POI id:", e.placeId);
     } else {

@@ -9,27 +9,32 @@ function PlaceWindow() {
   const [place, setPlace] = useState(null); // 선택된 장소 상태
 
   useEffect(() => {
-    if (!selectedPlaceId) return;
+    if (!selectedPlaceId) {
+      setPlace(null); // 선택된 장소가 없으면 상태 초기화
+      return;
+    }
 
     const fetchPlaceDetails = async () => {
-      if (!selectedPlaceId) return;
-
       const placeDetails = await getPlaceDetails(selectedPlaceId);
       setPlace(placeDetails); // 선택된 장소 상태 업데이트
     };
     fetchPlaceDetails();
   }, [selectedPlaceId, getPlaceDetails]);
 
-  return place ? (
+  if (!place) return null; // place가 없으면 아무것도 렌더링하지 않음
+
+  return (
     <Paper
       elevation={3}
       sx={{
         width: 300,
         height: "100%",
+        //height: "calc(100vh - 104px)",
         overflowY: "auto",
         borderRadius: 2,
         zIndex: 1000,
         backgroundColor: "white",
+        pointerEvents: "auto", // 클릭 이벤트를 허용
       }}
     >
       <img
@@ -44,7 +49,7 @@ function PlaceWindow() {
         <p>Rating: {place.rating}</p>
       </div>
     </Paper>
-  ) : null;
+  );
 }
 
 export default PlaceWindow;

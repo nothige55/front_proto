@@ -22,9 +22,10 @@ function App() {
             zIndex: 1000, // 지도 위로
             display: "flex", // 가로로 배치
             gap: 16, // 컴포넌트 사이 간격
+            pointerEvents: "none", // 기본적으로 클릭 이벤트를 차단하지 않음
           }}
         >
-          <div>
+          <div style={{ pointerEvents: "auto" }}>
             <PlanView />
           </div>
           <div
@@ -32,6 +33,7 @@ function App() {
               display: "flex",
               flexDirection: "column",
               gap: 16, // 컴포넌트 사이 간격
+              pointerEvents: "none", // PlaceSearch와 PlaceWindow는 상호작용 가능
             }}
           >
             <PlaceSearch />
